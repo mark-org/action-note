@@ -11,3 +11,8 @@ Several response times are separeated by commas and colons like addresses in the
 （如果用户网络较差，或者传递数据较大的，$request_time会比$upstream_response_time大很多）
 
 * 查看接口性能，查看$upstream_response_time
+
+
+# HEAD请求(HEAD方法用于仅获取响应头，而不获取响应)
+大部分网站宕机监控都是发送HEAD请求来查看服务器是否宕机
+这种请求一般IP地址有若干个，并且每个地址间隔一定时间会发送一次HEAD请求，以确定服务器正常工作
