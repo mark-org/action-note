@@ -30,5 +30,33 @@ rsync -P --rsh=ssh -e 'ssh -p 22' maintain@39.96.55.160:/home/data/nginx/logs/oa
 -u --update仅仅更新，也就是跳过所有已经存在于DST,并且文件时间晚于要备份的文件(不覆盖更新的文件)
 
 
+rsync -avz --delete -e "ssh -p ${port}" ${s_dir}/WEB-INF/classes/conf/${rootid}/ ${user}@${web_host}:${d_dir}/WEB-INF/classes/conf/${rootid}/ --exclude '.svn'
+
+--delete :delete extraneous files from destination dirs
+--exclude=PATTERN : exclude files matching PATTERN
+
+
+# echo
+echo -e "${newurl}" 
+-e : enable interpretation of  brackslash escapes
+
+# 在脚本中添加颜色:-e(\e[1;31m......\e[0m)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
