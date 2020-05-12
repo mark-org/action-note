@@ -44,6 +44,14 @@ echo -e "${newurl}"
 
 
 
+# 写速度
+dd if=/dev/zero of=kwxgd bs=64k count=4k oflag=dsync
+# 读速度
+dd if=kwxgd of=/dev/zero bs=64k count=4k iflag=direct
+
+
+
+
 
 
 
