@@ -68,3 +68,5 @@ dd if=kwxgd of=/dev/zero bs=64k count=4k iflag=direct
 
 
 
+
+

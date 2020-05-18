@@ -24,5 +24,10 @@ DockerDesktop.vhdx
 
 
 
+# Docker镜像保存为文件及从文件导入镜像的方法
+* docker save -o 要保存的文件名  要保存的镜像
+* docker load < 文件名 (docker load --input 文件)
+
+
 
 
