@@ -7,3 +7,5 @@ docker commit -a deng -m commit001 test01 REP:V
 
 docker run -it -v /home/my_docker/v:/deng -name cName 27487 sh
 
+# 查看版本 cat /etc/issue
+错误：cat /proc/version 或 uname -a ，这样查到的是宿主机的系统。
