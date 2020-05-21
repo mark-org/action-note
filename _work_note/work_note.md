@@ -91,6 +91,12 @@ control.MobileInterfaceControlWithCommon_OutWork:394
 # 培训环境由于root_id多个，使用了万能的map, 一百多万数据，造成内存溢出(多个接口都存在这个问题)
 
 
+# ps -mp PID -o THREAD,tid,time | sort -k2r > linux_thread 可查看线程的运行时间
+
+
+# 查看事务未提交的SQL
+查看最一条都是profile的SQL
+可处理方式：开启general log查看未提交事务的sql, 通过thread-id来查看
 
 
 
