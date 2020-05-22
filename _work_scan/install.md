@@ -1,3 +1,14 @@
+# 腾讯云镜像
+创建或修改 /etc/docker/daemon.json
+```
+{
+   "registry-mirrors": [
+       "https://mirror.ccs.tencentyun.com"
+  ]
+}
+```
+systemctl daemon-reload
+systemctl restart docker
 
 # network
 docker network create scan-network
@@ -5,19 +16,25 @@ docker network create scan-network
 
 # 安装chrome
 * docker pull selenium/standalone-chrome
-* docker run -d --network scan-network --network-alias scan-chrome -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+* docker run -d --network scan-network --network-alias scan-chrome -p 4444:4444 --shm-size=2g --name chrome selenium/standalone-chrome
 
 
 # 安装python
-* docker pull pythone
-* docker run -it python scan-python bash
+* docker pull python
+* docker run -it --name scan-python python bash
 
 * mkdir app
 * pip install selenium
 * pip install Flask
 
-* docker commit -m "selenim Flask" scan-python scan-python
-* docker run -d --network scan-network --network-alias scan-python -p 5000:5000 -v /usr/local/app:/app python /app/
+* docker commit -m "selenium Flask" scan-python scan-python
+* docker run -d --network scan-network --network-alias scan-python -p 5000:5000 -v /usr/local/app:/app --name flask-test scan-python python /app/app.py
+* docker logs flask-test
+* docker run -it --rm --network scan-network --network-alias scan-python -v /usr/local/app:/app --name chrome-test scan-python python /app/chrome.py
+
+
+flask的host="0.0.0.0"
+curl: (56) Recv failure: Connection reset by peer
 
 
 selenum测试脚本
@@ -33,7 +50,7 @@ driver = webdriver.Remote(
 driver.get("http://www.baidu.com")
 print(driver.title)
 
-picture_url = driver.get_screenshot_as_file("test.png")
+picture_url = driver.get_screenshot_as_file("/app/test.png")
 print("%s：success picture！！！" % picture_url)
 
 driver.close()
@@ -51,6 +68,17 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
 ```
+
+# 删除所有容器
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+
+
+
+
+
+
 
