@@ -18,3 +18,10 @@ select 'end';
 commit;
 ```
 
+select * from performance_schema.events_statements_history
+
+FROM sys.session 
+https://www.jianshu.com/p/be4965ed802e
+
+  show variables like '%general%';
+ set global general_log = ON;
