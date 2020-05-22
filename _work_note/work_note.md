@@ -99,7 +99,8 @@ control.MobileInterfaceControlWithCommon_OutWork:394
 可处理方式：开启general log查看未提交事务的sql, 通过thread-id来查看
 
 
-
+# nginx在代理超时请求另一接口造成重复提交
+# nginx在超时时间小于代理，造成重复发现金券
 
 
 
