@@ -18,27 +18,26 @@ docker network create scan-network
 * docker pull selenium/standalone-chrome
 * docker run -d --network scan-network --network-alias scan-chrome -p 4444:4444 --shm-size=2g --name chrome selenium/standalone-chrome
 
-
 # 安装python
-* docker pull python
-* docker run -it --name scan-python python bash
+```
+$ docker pull python
+$ docker run -it --name scan-python python bash
 
-* mkdir app
-* pip install mysql-connector-python -i https://mirrors.aliyun.com/pypi/simple/
-* pip install selenium -i https://mirrors.aliyun.com/pypi/simple/
-* pip install Flask -i https://mirrors.aliyun.com/pypi/simple/
-
-
-* docker commit -m "selenium Flask" scan-python scan-python-image
-* docker run -d --network scan-network --network-alias scan-python -p 5000:5000 -v /usr/local/app:/app --name flask-test scan-python-image python /app/app.py
-* docker logs flask-test
-* docker run -it --rm --network scan-network --network-alias scan-python -v /usr/local/app:/app --name chrome-test scan-python-image python /app/chrome.py
-* docker run -it --rm --network scan-network --network-alias scan-python -v /usr/local/app:/app --name mysql-test scan-python-image python /app/my.py
+$ mkdir app
+$ pip install mysql-connector-python -i https://mirrors.aliyun.com/pypi/simple/
+$ pip install selenium -i https://mirrors.aliyun.com/pypi/simple/
+$ pip install Flask -i https://mirrors.aliyun.com/pypi/simple/
 
 
-flask的host="0.0.0.0"
-curl: (56) Recv failure: Connection reset by peer
+$ docker commit -m "selenium Flask mysql-connector-python" scan-python scan-python-image
+$  docker run -d --network scan-network --network-alias scan-python -p 5000:5000 -v /usr/local/app:/app --name flask-test scan-python-image python /app/app.py
+$ docker logs flask-test
+$ docker run -it --rm --network scan-network --network-alias scan-python -v /usr/local/app:/app --name chrome-test scan-python-image python /app/chrome.py
+$ docker run -it --rm --network scan-network --network-alias scan-python -v /usr/local/app:/app --name mysql-test scan-python-image python /app/my.py
 
+# flask的host="0.0.0.0"
+# curl: (56) Recv failure: Connection reset by peer
+```
 
 ### selenum测试脚本
 ```
