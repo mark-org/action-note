@@ -20,7 +20,7 @@ ps -mp PID -o THREAD,tid,time | sort -k2r > linux_thread
 
 ```
 # 在文件/usr/local/nginx/conf/vhosts/oa.conf的location ~ ^/favicon.ico$ {上面加上以下代码
-location ~ ^/RedseaPlatform/.*\.(js|css)$ {
+location ~ ^/RedseaPlatform/.*\.(js|css|png)$ {
 	root /usr/local/webapps/;
 }
 ```
