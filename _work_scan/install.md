@@ -25,6 +25,7 @@ $ docker run -it --name scan-python python bash
 
 $ mkdir app
 $ pip install mysql-connector-python -i https://mirrors.aliyun.com/pypi/simple/
+$ pip install sqlalchemy -i https://mirrors.aliyun.com/pypi/simple/
 $ pip install selenium -i https://mirrors.aliyun.com/pypi/simple/
 $ pip install Flask -i https://mirrors.aliyun.com/pypi/simple/
 
