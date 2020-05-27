@@ -28,6 +28,7 @@ $ pip install mysql-connector-python -i https://mirrors.aliyun.com/pypi/simple/
 $ pip install sqlalchemy -i https://mirrors.aliyun.com/pypi/simple/
 $ pip install selenium -i https://mirrors.aliyun.com/pypi/simple/
 $ pip install Flask -i https://mirrors.aliyun.com/pypi/simple/
+$ pip install flask-restful -i https://mirrors.aliyun.com/pypi/simple/
 
 
 $ docker commit -m "selenium Flask mysql-connector-python" scan-python scan-python-image
