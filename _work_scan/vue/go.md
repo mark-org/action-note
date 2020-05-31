@@ -8,9 +8,13 @@ vue init webpack vuedemo
 cd vuedemo
 npm install
 npm install element-ui --save
-
-
 ```
+
+# scan-vue
+上一级目录 :vue init webpack scan-vue
+npm install element-ui --save
+
+
 
 * 修改main.js
 ```
@@ -47,6 +51,6 @@ new Vue({
 </template>
 
 ```
-* npm run dev
+* npm run dev 
 
-
+* 打包 npm run build
