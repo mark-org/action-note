@@ -24,8 +24,9 @@ location ~ ^/RedseaPlatform/.*\.(js|css|png)$ {
 	root /usr/local/webapps/;
 }
 ```
-
-
-
+# 硬盘IO性能
+*写入dd if=/dev/zero of=kwxgd bs=64k count=4k oflag=dsync  
+*读dd if=kwxgd of=/dev/null bs=64k count=4k oflag=dsync
+dd if=kwxgd bs=64k | dd of=/dev/null
 
 
