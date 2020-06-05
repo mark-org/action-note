@@ -102,6 +102,11 @@ control.MobileInterfaceControlWithCommon_OutWork:394
 # nginx在代理超时请求另一接口造成重复提交
 # nginx在超时时间小于代理，造成重复发现金券
 
+# RedseaPlatform启动慢的原因
+在service层互相循环调用，用BeanTool.getBean(*.class)改掉小部分循环即可
+
+# 处理猿辅导正式环境数据库内存溢出问题(经测试由DERIVED产生内存溢出，需要优化子查询的distinct语句或减少临时表的大小)
+处理方式一:优化sql,去distinct 处理方式二mysql升级到5.7.30
 
 
 
