@@ -108,5 +108,25 @@ control.MobileInterfaceControlWithCommon_OutWork:394
 # 处理猿辅导正式环境数据库内存溢出问题(经测试由DERIVED产生内存溢出，需要优化子查询的distinct语句或减少临时表的大小)
 处理方式一:优化sql,去distinct 处理方式二mysql升级到5.7.30
 
+# mysql bug 升级到5.7.30 就不会内存溢出
+猿辅导内存溢出问题.txt
+
+# 日志过多
+比较高一点的cpu都集中在org.apache.log4j.Category.callAppenders(org.apache.log4j.spi.LoggingEvent) @bci=12, line=204 (Compiled frame)
+DEBUG过多造成
+
+石药正式2020-06-10 9点多卡住问题，
+原因：一分钟(2020-06-10 09:47)打印1万多条日志*每条N行， (早上登录人多，session退出打印日志，应该是属于正常业务)
+解决方式：去掉log4j的DEBUG
+
+# 封存数据没有带月份参数，造成内存溢出过多
+
+# java压缩图片占用内存过多
+
+
+
+
+
+
 
 
