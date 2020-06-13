@@ -1,0 +1,30 @@
+
+>>>>>>>测试数据>>>>>>>
+test表一百万
+explain
+select count(*) from test t join (select DISTINCT concat(id, '') id, name from test) tt on t.id = tt.id
+
+select current_count_used from performance_schema.memory_summary_global_by_event_name where event_name = 'memory/memory/HP_PTRS'
+在猿辅导环境， HP_PTRS内存加大2000*128K=256M
+在mysql5.7.30和mysql8 HP_PTRS不变
+
+>>>>>>>真实数据>>>>>>>
+explain
+select h.base_code,s.staff_name,detail.vacation_date,detail.process_id,detail.ext1,s.vacation_type_name,detail.time_unit_num,
+  s.time_unit,detail.use_type,detail.remark,detail.business_key,s.begin_date,s.delay_date,s.vacation_type,detail.vacation_staff_id,
+  Func_GetUserNameByUserID(IFNULL(detail.operator_id,detail.create_user_id)) operator_id,detail.operate_time
+from kq_vacation_staff_detail  detail JOIN  kq_vacation_staff s  ON s.vacation_staff_id = detail.vacation_staff_id  
+  JOIN hr_staff_base h ON h.base_id=s.staff_id   
+  JOIN pt_staff_stru p ON s.staff_id = p.STAFF_ID AND p.POST_STRU_ID='1'  
+JOIN (SELECT DISTINCT c.stru_id FROM pt_user_stru_cache c WHERE c.user_id= '403faadb-85f1-11ea-a568-00163e2ee5fe' AND c.stru_tree_code LIKE CONCAT( 'yuanfudao','%')
+  ) aa ON aa.stru_id=p.DEPT_STRU_ID
+where s.in_use<>'0' and detail.in_use='1'
+AND detail.vacation_date BETWEEN '2019-10-01' AND '2020-06-05' 
+
+在猿辅导环境，HP_PTRS内存加大17*128K=2M  SELECT DISTINCT 增量HP_PTRS成正比
+去掉DISTINCT  HP_PTRS不增长
+
+>>>>>>>结论>>>>>>>
+处理方式一:优化sql,去DERIVED的distinct 
+处理方式二:mysql升级到5.7.30
+
