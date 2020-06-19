@@ -2,10 +2,10 @@
 # CPU高
 ```
 # tomcat 线程
-jstack -F PID > java_thread.txt
+jstack -F PID > /tmp/java_thread0.txt
 
 # linux 线程
-ps -mp PID -o THREAD,tid,time | sort -k2r > linux_thread
+ps -mp PID -o THREAD,tid,time | sort -k2r > /tmp/linux_thread0.txt
 ```
 
 # rsync -P --rsh=ssh -e 'ssh -p 22' maintain@39.96.55.160:/home/data/nginx/logs/oa.access.zip /home/deploy/bak/
