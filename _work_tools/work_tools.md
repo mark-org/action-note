@@ -30,3 +30,16 @@ location ~ ^/RedseaPlatform/.*\.(js|css|png)$ {
 dd if=kwxgd bs=64k | dd of=/dev/null
 
 
+# mongodb运维
+```
+var collNames = db.getCollectionNames();for (var i = 0; i < collNames.length; i++) {  
+	var coll = db.getCollection(collNames[i]);    
+	var stats = coll.stats(1024 * 1024);    
+	print(stats.ns, stats.storageSize); 
+}
+
+db.repairDatabase()
+```
+
+
+
