@@ -41,5 +41,7 @@ var collNames = db.getCollectionNames();for (var i = 0; i < collNames.length; i+
 db.repairDatabase()
 ```
 
+# jrebel
+${jrebel_args:jdk1.8.0_60}
 
 
