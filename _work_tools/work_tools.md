@@ -43,5 +43,24 @@ db.repairDatabase()
 
 # jrebel
 ${jrebel_args:jdk1.8.0_60}
+https://jrebel.qekang.com/bb25c9bf-7695-48d6-b1a0-baf893ca7631
+
+
+
+update performance_schema.setup_instruments set enabled='yes', timed='yes' where name like 'memory/%';
+
+linux
+```
+ps -eo pid,tty,user,comm,lstart,etime | grep redis
+
+```
+
+mysql
+```
+update performance_schema.setup_instruments set enabled = 'yes' where name like 'memory%';
+
+select * from performance_schema.setup_instruments where name like 'memory%';
+```
+
 
 
