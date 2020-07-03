@@ -38,6 +38,10 @@ var collNames = db.getCollectionNames();for (var i = 0; i < collNames.length; i+
 	print(stats.ns, stats.storageSize); 
 }
 
+# 用户菜单缓存，RemoveAllDocument
+userHomeMenu
+userMenuSrc
+
 db.repairDatabase()
 ```
 
